@@ -9,21 +9,18 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Banner */
 .banner {
     width: 100%;
-    text-align: center;
-    background-color: #ddd;
-    padding: 10px 0;
 }
 
 .banner img {
-    width: 80%;
-    max-height: 200px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Header */
@@ -80,8 +77,6 @@ body {
 
 .sidebar img {
     width: 100%;
-    height: auto;
-    max-height: 300px;
     object-fit: cover;
     border-radius: 5px;
 }
