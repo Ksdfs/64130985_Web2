@@ -1,46 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Quản lý Trang & Bài Viết</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        table.layout {
+            width: 960px;
+            height: 600px;
+            margin: 40px auto;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        td.header {
+            height: 40px;
+            background: #f2f2f2;
+            text-align: right;
+            padding: 8px;
+        }
+
+        td.footer {
+            height: 40px;
+            background: #f2f2f2;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        td.sidebar {
+            width: 200px;
+            border-right: 1px solid black;
+        }
+
+        .logo {
+            width: 100%;
+            height: 120px;
+            border-bottom: 1px solid black;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .menu a {
+            display: block;
+            border: 1px solid black;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            padding: 0;
+            overflow: auto;
+            height: 100%;
+        }
+
+        table.content-table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table.content-table {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div th:fragment="content">
-        <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="position-sticky">
-                    <h5 class="text-center mt-3">Dasboard</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="/pages/list">Page - List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/new">Page - Addnew</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/posts/list">Post - List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/posts/new">Post - Addnew</a></li>
-                    </ul>
-                </div>
-            </nav>
 
-            <!-- Nội dung -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-end p-2">
-                    <span class="fw-bold">[UserName]</span>
-                </div>
-                <div class="content p-3">
-                    <h4 class="text-center">Content</h4>
-                    <div>
-                        <!-- Nội dung con sẽ hiển thị ở đây -->
-                        <div th:replace="~{::content}"></div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-    <footer class="text-center p-3 mt-3">
-        ©2025 by Student Name – FIT.NTU
-    </footer>
-    <div th:replace="${body}" />
+<table class="layout">
+    <!-- HEADER -->
+    <tr>
+        <td class="header" colspan="2">Nguyen Ngoc Khanh</td>
+    </tr>
+
+    <!-- BODY -->
+    <tr style="height: 100%;">
+        <!-- SIDEBAR FULL HEIGHT -->
+        <td class="sidebar">
+            <div class="logo">
+                <img src="https://khoacntt.ntu.edu.vn/Portals/54/Logo-Khoa-CNTT-NTU.png?ver=w1WaDt4_a6t2zoyh_JwxVA%3D%3D" alt="Logo Khoa CNTT">
+            </div>
+            <div class="menu">
+                <a th:href="@{/}">Dasdboard</a>
+                <a th:href="@{/page/all}">Page -List</a>
+                <a th:href="@{/page/new}">Page -Addnew</a>
+                <a th:href="@{/post/all}">Post -List</a>
+                <a th:href="@{/post/new}">Post -Addnew</a>
+            </div>
+        </td>
+
+        <!-- CONTENT -->
+        <td class="content">
+            <div th:replace="${view} :: content"></div>
+        </td>
+    </tr>
+
+    <!-- FOOTER -->
+    <tr>
+        <td class="footer" colspan="2">©2025 by Nguyen Ngoc Khanh – FIT.NTU</td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!-- file: page_view.html -->
+<div th:fragment="content" style="width: 100%; height: 100%; padding: 20px; box-sizing: border-box;">
+    <h2>Chi tiết Page</h2>
+
+    <table style="width: 100%; border-collapse: collapse;" border="1">
+        <tr>
+            <th style="width: 200px;">Page Name</th>
+            <td th:text="${page.pageName}"></td>
+        </tr>
+        <tr>
+            <th>Keyword</th>
+            <td th:text="${page.keyword}"></td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td th:text="${page.content}"></td>
+        </tr>
+        <tr>
+            <th>Parent Page ID</th>
+            <td th:text="${page.parentPageId}"></td>
+        </tr>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/page/all}">← Quay lại danh sách</a>
+    </div>
+</div>

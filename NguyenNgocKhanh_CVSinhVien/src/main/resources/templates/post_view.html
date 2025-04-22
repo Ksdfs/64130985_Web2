@@ -1,5 +1,4 @@
-
-<div th:fragment="content" >
+<div th:fragment="content" style="width: 100%; height: 100%; padding: 20px; box-sizing: border-box;">
     <table style="width: 100%; height: 100%; border-collapse: collapse;" border="1">
         <tr>
             <th>ID</th>
@@ -8,13 +7,16 @@
             <th>Actions</th>
         </tr>
         <tr th:each="post : ${posts}">
-            <td th:text="${post.id}"></td>
-            <td th:text="${post.title}"></td>
-            <td th:text="${post.categoryId}"></td>
+            <td th:text="${post.id}">1</td>
+            <td th:text="${post.title}">Tiêu đề</td>
+            <td th:text="${post.categoryId}">100</td>
             <td>
                 <a th:href="@{'/post/view/' + ${post.id}}">View</a> |
                 <a th:href="@{'/post/delete/' + ${post.id}}">Delete</a>
             </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(posts)}">
+            <td colspan="4" style="text-align: center; color: gray;">Không có bài viết nào</td>
         </tr>
     </table>
 </div>

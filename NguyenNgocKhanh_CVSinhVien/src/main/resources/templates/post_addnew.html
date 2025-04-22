@@ -1,0 +1,11 @@
+
+<div th:fragment="content" style="width: 100%; height: 100%; padding: 20px; box-sizing: border-box;">
+    <form th:action="@{/post/save}" th:object="${post}" method="post" style="width: 100%; height: 100%;">
+        <table style="width: 100%; height: auto; border-collapse: collapse;">
+            <tr><td>Title:</td><td><input th:field="*{title}" required></td></tr>
+            <tr><td>Content:</td><td><textarea th:field="*{content}"></textarea></td></tr>
+            <tr><td>Category ID:</td><td><input type="number" th:field="*{categoryId}"></td></tr>
+            <tr><td colspan="2"><button type="submit">Lưu Post</button></td></tr>
+        </table>
+    </form>
+</div>

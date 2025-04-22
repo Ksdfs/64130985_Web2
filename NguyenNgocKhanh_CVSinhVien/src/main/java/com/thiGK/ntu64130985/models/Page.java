@@ -1,17 +1,35 @@
 package com.thiGK.ntu64130985.models;
 
-import jakarta.persistence.*;
-@Entity
-@Table(name = "pages")
 public class Page {
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private int id;
     private String pageName;
     private String keyword;
     private String content;
-    private Long parentPageId;
+    private Integer parentPageId;
 
-    // Getter và Setter
+    public Page() {}
+
+    public Page(int id, String pageName, String keyword, String content, Integer parentPageId) {
+        this.id = id;
+        this.pageName = pageName;
+        this.keyword = keyword;
+        this.content = content;
+        this.parentPageId = parentPageId;
+    }
+
+    // Getter & Setter
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getPageName() { return pageName; }
+    public void setPageName(String pageName) { this.pageName = pageName; }
+
+    public String getKeyword() { return keyword; }
+    public void setKeyword(String keyword) { this.keyword = keyword; }
+
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
+
+    public Integer getParentPageId() { return parentPageId; }
+    public void setParentPageId(Integer parentPageId) { this.parentPageId = parentPageId; }
 }

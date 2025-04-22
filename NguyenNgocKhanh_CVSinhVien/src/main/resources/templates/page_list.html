@@ -1,35 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Danh sách Pages</title>
- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-</head>
-<body>
-<div th:replace="layout :: content">
-        <h3 class="text-center">Danh sách Pages</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Page Name</th>
-                    <th>Parent ID</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="page : ${pages}">
-                    <td th:text="${page.id}"></td>
-                    <td th:text="${page.pageName}"></td>
-                    <td th:text="${page.parentPageId}"></td>
-                    <td>
-                        <a class="btn btn-info btn-sm" th:href="@{/pages/view/{id}(id=${page.id})}">👁 View</a>
-                        <a class="btn btn-warning btn-sm" th:href="@{/pages/edit/{id}(id=${page.id})}">✏ Edit</a>
-                        <a class="btn btn-danger btn-sm" th:href="@{/pages/delete/{id}(id=${page.id})}" onclick="return confirm('Xóa trang này?')">🗑 Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+<div th:fragment="content">
+    <table style="width: 100%; height: 100%; border-collapse: collapse;" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Page Name</th>
+            <th>Parent Page ID</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="page : ${pages}">
+            <td th:text="${page.id}">1</td>
+            <td th:text="${page.pageName}">Home</td>
+            <td th:text="${page.parentPageId}">0</td>
+            <td>
+                <a th:href="@{'/page/view/' + ${page.id}}">View</a> |
+                <a th:href="@{'/page/delete/' + ${page.id}}">Delete</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(pages)}">
+            <td colspan="4" style="text-align:center; color:gray;">Không có trang nào</td>
+        </tr>
+    </table>
+</div>
